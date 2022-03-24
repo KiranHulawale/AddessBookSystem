@@ -5,6 +5,7 @@ import java.io.*;
 public class AddressBook{
 
     private ArrayList<Person> data=new ArrayList<Person>();
+    static ArrayList<AddressBookList> addresslist = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     public String readString(String displayMessage){
@@ -24,6 +25,7 @@ public class AddressBook{
         System.out.println();
         String name=readString("[+]Enter Person's name: ");
         long phoneNumber=readLong("[+]Enter his/her phone number: ");
+
         int index=0;
         for(Person p : this.data)
         {
@@ -97,9 +99,7 @@ public class AddressBook{
             addPerson();
         }
     }
-    /* Address Book Operations */
-  
- 
+
     public void deletePerson(){
 
         int index=this.indexOfPerson();
@@ -124,6 +124,7 @@ public class AddressBook{
         Collections.sort(this.data, (person1, person2) -> (person1.getZipCode().compareTo(person2.getZipCode())));
         System.out.println("\n[*]\tEntries sorted by zip code successfully");
     }
+
 
     /* Display Methods */
     public void showPerson(){
@@ -151,6 +152,16 @@ public class AddressBook{
         }
     }
 
+    public void NewAddressBook() {
+        System.out.println("Enter Address Book Name :- ");
+        String addressbook_name = sc.next();
+
+        AddressBookList addressBook= new AddressBookList(addressbook_name);
+        addresslist.add(addressBook);
+
+        System.out.println("New Address Book Name is added to list.");
+    }
+    /* Operations Respective Method Caller */
     public void runMenu(){
 
         long choice=-1;
