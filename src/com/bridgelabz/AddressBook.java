@@ -5,6 +5,7 @@ import java.io.*;
 public class AddressBook{
 
     private ArrayList<Person> data=new ArrayList<Person>();
+    static ArrayList<AddressBookList> addresslist = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     public String readString(String displayMessage){
@@ -151,6 +152,15 @@ public class AddressBook{
         }
     }
 
+    public void NewAddressBook() {
+        System.out.println("Enter Address Book Name :- ");
+        String addressbook_name = sc.next();
+
+        AddressBookList addressBook= new AddressBookList(addressbook_name);
+        addresslist.add(addressBook);
+
+        System.out.println("New Address Book Name is added to list.");
+    }
     /* Operations Respective Method Caller */
     public void runMenu(){
 
@@ -162,6 +172,7 @@ public class AddressBook{
             System.out.println("| 3. Delete a person");
             System.out.println("| 4. Show all persons");
             System.out.println("| 5. Add multiple users");
+            System.out.println("| 6. Add new address book");
             System.out.println("| 6. Exit");
             choice=readLong("[+]Enter your choice: ");
 
@@ -177,7 +188,9 @@ public class AddressBook{
                     break;
                 case 5: AddMultiplePersons();
                     break;
-                case 6: choice = 0;
+                case 6: NewAddressBook();
+                    break;
+                case 7: choice = 0;
                     break;
                 default: System.out.println("\nBad Input!");
             }
