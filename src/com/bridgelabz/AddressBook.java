@@ -6,8 +6,7 @@ import  java.util.Scanner;
 public class AddressBook {
 
     private ArrayList<Person> data=new ArrayList<Person>();
-
-
+      
     public String readString(String displayMessage){
 
         Scanner sc = new Scanner(System.in);
@@ -16,13 +15,7 @@ public class AddressBook {
 
         return input;
     }
-
-    public static void createAddressBook() {
-        System.out.println("\nCreate address book ");
-        System.out.println("\n give name to address book ");
-        String addressBookName = sc.next();
-        System.out.println("Address book name is :" + addressBookName);
-    }
+      
     public long readLong(String displayMessage){
 
         Scanner sc = new Scanner(System.in);
@@ -49,6 +42,7 @@ public class AddressBook {
     }
 
     /* Address Book Operations */
+
     public void addPerson(){
 
         System.out.println();
@@ -61,6 +55,92 @@ public class AddressBook {
         Person newEntry=new Person(name, city, state, address, zipCode, phoneNumber);
 
         this.data.add(newEntry);
+        System.out.println("\n"+name+" added successfully to address book.");
+    }
+    
+    public void editPerson(){
+
+        int index=this.indexOfPerson();
+
+        if(index != -1){
+            String options="[+]\tWhat you want to change?\n\t1. City\n\t2. State\n\t3. Address\n\t4. Zip Code\n\t5. PhoneNumber\n: ";
+            int choice=(int)readLong(options);
+
+            switch(choice)
+            {
+                case 1:
+                    this.data.get(index).setCity(readString("[+]Enter new City: "));
+                    System.out.println("\nEntry Modified");
+                    break;
+                case 2:
+                    this.data.get(index).setState(readString("[+]Enter new State: "));
+                    System.out.println("\nEntry Modified");
+                    break;
+                case 3:
+                    this.data.get(index).setAddress(readString("[+]Enter new Address: "));
+                    System.out.println("\ntEntry Modified");
+                    break;
+                case 4:
+                    this.data.get(index).setZipCode(readString("[+]Enter new Zip Code: "));
+                    System.out.println("\nEntry Modified");
+                    break;
+                case 5:
+                    this.data.get(index).setPhoneNumber(String.valueOf(readLong("[+]Enter new Phone number: ")));
+                    System.out.println("\nEntry Modified");
+                    break;
+                default:
+                    System.out.println("\ntBad Input!");
+            }
+        }
+        else{
+
+            System.out.println("\ntNo such person found!");
+        }
+    }
+    
+    public void deletePerson(){
+
+        int index=this.indexOfPerson();
+
+        if(index != -1){
+
+            Person p=this.data.remove(index);
+            System.out.println("\nPerson "+p.getName()+" with mobile number "+p.getPhoneNumber()+" removed successfully.");
+        }
+        else{
+
+            System.out.println("\ntNo one with these details found!");
+        }
+    }
+
+    /* Display Methods */
+    public void showPerson(){
+
+        int index=this.indexOfPerson();
+
+        if(index != -1){
+
+            this.data.get(index).showPersonsDetails();
+        }
+        else{
+
+            System.out.println("\n[*]\tNo one with these details found!");
+        }
+    }
+    public void showAllPersons(){
+
+        for(Person p : this.data)
+        {
+            p.showPersonsDetails();
+        }
+        if(this.data.isEmpty()){
+
+            System.out.println("\ntAddress Book is empty!\n");
+        }
+    }
+
+
+    public void runMenu(){
         System.out.println("\n[*]\t"+name+" added successfully to address book.");
     }
     public void editPerson(){
@@ -132,7 +212,6 @@ public class AddressBook {
 
     /* Operations Respective Method Caller */
     public void runMenu(){
-
         long choice=-1;
         while(choice != 0)
         {
@@ -158,7 +237,7 @@ public class AddressBook {
                     break;
                 case 6: choice = 0;
                     break;
-                default: System.out.println("\n[*]\tBad Input!");
+                default: System.out.println("\nBad Input!");
             }
         }
     }
@@ -168,8 +247,8 @@ public class AddressBook {
         AddressBook newBook=new AddressBook();
         newBook.runMenu();
     }
-        createAddressBook();
+                default: System.out.println("\n[*]\tBad Input!");
+            }
+        }
     }
-
-
 }
