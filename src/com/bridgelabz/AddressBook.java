@@ -24,7 +24,6 @@ public class AddressBook{
         System.out.println();
         String name=readString("[+]Enter Person's name: ");
         long phoneNumber=readLong("[+]Enter his/her phone number: ");
-
         int index=0;
         for(Person p : this.data)
         {
@@ -98,7 +97,9 @@ public class AddressBook{
             addPerson();
         }
     }
-
+    /* Address Book Operations */
+  
+ 
     public void deletePerson(){
 
         int index=this.indexOfPerson();
@@ -123,7 +124,6 @@ public class AddressBook{
         Collections.sort(this.data, (person1, person2) -> (person1.getZipCode().compareTo(person2.getZipCode())));
         System.out.println("\n[*]\tEntries sorted by zip code successfully");
     }
-
 
     /* Display Methods */
     public void showPerson(){
@@ -151,7 +151,6 @@ public class AddressBook{
         }
     }
 
-    /* Operations Respective Method Caller */
     public void runMenu(){
 
         long choice=-1;
@@ -162,6 +161,7 @@ public class AddressBook{
             System.out.println("| 3. Delete a person");
             System.out.println("| 4. Show all persons");
             System.out.println("| 5. Add multiple users");
+            System.out.println("| 6. Add new address book");
             System.out.println("| 6. Exit");
             choice=readLong("[+]Enter your choice: ");
 
@@ -177,7 +177,9 @@ public class AddressBook{
                     break;
                 case 5: AddMultiplePersons();
                     break;
-                case 6: choice = 0;
+                case 6: NewAddressBook();
+                    break;
+                case 7: choice = 0;
                     break;
                 default: System.out.println("\nBad Input!");
             }
