@@ -7,6 +7,7 @@ public class AddressBook {
 
     private ArrayList<Person> data=new ArrayList<Person>();
 
+
     public String readString(String displayMessage){
 
         Scanner sc = new Scanner(System.in);
@@ -14,6 +15,13 @@ public class AddressBook {
         String input=sc.nextLine();
 
         return input;
+    }
+
+    public static void createAddressBook() {
+        System.out.println("\nCreate address book ");
+        System.out.println("\n give name to address book ");
+        String addressBookName = sc.next();
+        System.out.println("Address book name is :" + addressBookName);
     }
     public long readLong(String displayMessage){
 
@@ -160,4 +168,8 @@ public class AddressBook {
         AddressBook newBook=new AddressBook();
         newBook.runMenu();
     }
+        createAddressBook();
+    }
+
+
 }
