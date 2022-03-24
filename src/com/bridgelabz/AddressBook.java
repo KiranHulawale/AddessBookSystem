@@ -40,7 +40,6 @@ public class AddressBook {
         return -1;
     }
 
-    /* Address Book Operations */
     public void addPerson(){
 
         System.out.println();
@@ -53,8 +52,9 @@ public class AddressBook {
         Person newEntry=new Person(name, city, state, address, zipCode, phoneNumber);
 
         this.data.add(newEntry);
-        System.out.println("\n[*]\t"+name+" added successfully to address book.");
+        System.out.println("\n"+name+" added successfully to address book.");
     }
+    
     public void editPerson(){
 
         int index=this.indexOfPerson();
@@ -67,33 +67,34 @@ public class AddressBook {
             {
                 case 1:
                     this.data.get(index).setCity(readString("[+]Enter new City: "));
-                    System.out.println("[*]\tEntry Modified");
+                    System.out.println("\nEntry Modified");
                     break;
                 case 2:
                     this.data.get(index).setState(readString("[+]Enter new State: "));
-                    System.out.println("[*]\tEntry Modified");
+                    System.out.println("\nEntry Modified");
                     break;
                 case 3:
                     this.data.get(index).setAddress(readString("[+]Enter new Address: "));
-                    System.out.println("[*]\tEntry Modified");
+                    System.out.println("\ntEntry Modified");
                     break;
                 case 4:
                     this.data.get(index).setZipCode(readString("[+]Enter new Zip Code: "));
-                    System.out.println("[*]\tEntry Modified");
+                    System.out.println("\nEntry Modified");
                     break;
                 case 5:
                     this.data.get(index).setPhoneNumber(String.valueOf(readLong("[+]Enter new Phone number: ")));
-                    System.out.println("[*]\tEntry Modified");
+                    System.out.println("\nEntry Modified");
                     break;
                 default:
-                    System.out.println("\n[*]\tBad Input!");
+                    System.out.println("\ntBad Input!");
             }
         }
         else{
 
-            System.out.println("\n[*]\tNo such person found!");
+            System.out.println("\ntNo such person found!");
         }
     }
+    
     public void deletePerson(){
 
         int index=this.indexOfPerson();
@@ -101,15 +102,13 @@ public class AddressBook {
         if(index != -1){
 
             Person p=this.data.remove(index);
-            System.out.println("\n[*]\tPerson "+p.getName()+" with mobile number "+p.getPhoneNumber()+" removed successfully.");
+            System.out.println("\nPerson "+p.getName()+" with mobile number "+p.getPhoneNumber()+" removed successfully.");
         }
         else{
 
-            System.out.println("\n[*]\tNo one with these details found!");
+            System.out.println("\ntNo one with these details found!");
         }
     }
-
-
 
     /* Display Methods */
     public void showPerson(){
@@ -133,13 +132,12 @@ public class AddressBook {
         }
         if(this.data.isEmpty()){
 
-            System.out.println("\n\n[*]\t\tAddress Book is empty!\t\t\n");
+            System.out.println("\ntAddress Book is empty!\n");
         }
     }
 
-    /* Operations Respective Method Caller */
-    public void runMenu(){
 
+    public void runMenu(){
         long choice=-1;
         while(choice != 0)
         {
@@ -165,7 +163,7 @@ public class AddressBook {
                     break;
                 case 6: choice = 0;
                     break;
-                default: System.out.println("\n[*]\tBad Input!");
+                default: System.out.println("\nBad Input!");
             }
         }
     }
